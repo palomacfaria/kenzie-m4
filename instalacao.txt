@@ -19,7 +19,9 @@ Como instalar um projeto TS
 }
 
 4- Crie uma pasta src + um aquivo index.ts
-5- Crie um .gitignore contendo dentro do arquivo: node_modules
+5- Crie um .gitignore contendo dentro do arquivo: node_modules fora da pasta src
 6- npm i -D ts-node-dev (instalação de dependência de desenvolvimento)
-7- no arquivo package.json -> "scripts"{"dev": "tsnd --respawn src/index.ts"} (Criando um comando para rodar a aplicação toda vez que ela for atualizada)
+7- no arquivo package.json -> "scripts": {
+    "dev": "tsnd --respawn src/index.ts"
+  }, (Criando um comando para rodar a aplicação toda vez que ela for atualizada)
 8- npm run dev 
