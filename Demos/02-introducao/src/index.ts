@@ -1,7 +1,26 @@
-//O Typescript não afeta a funcionalidade da aplicação
-//Sintaxe descritiva: fluxo de dados na aplicação
+//Tipos Primitivos
+let firstName = "Paloma";
+let age = 24;
+let isATeacher = false;
 
-console.log("olá mundo!");
+function sayMyName(name: string) {
+  console.log(name);
+}
+sayMyName(firstName);
 
-//Depndências de produção - pacotes essenciais para rodar o projeto no ar
-//Dependências de desenvolvimento - pacotes para auxiliar o desenvolvimento
+function sum(a: number, b: number): number {
+  return a + b;
+}
+sum(5, 2);
+
+//Podemos apontar tipos em qualquer circunstância, mas não é obrigatório
+
+//Inferência - Dedução automática de tipos
+
+//QUANDO EU PRECISO APONTAR TIPAGEM? Quando a inferência falha
+
+//A inferência não vai conseguir deduzir tipos de listas que iniciam vazias
+
+//A inferência não vai conseguir deduzir tipos de parametros de função
+
+//A inferência não vai conseguir deduzir tipos que varaiam
