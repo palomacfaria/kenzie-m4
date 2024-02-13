@@ -7,18 +7,25 @@ interface IOpearatorConfig {
 
 let total = 0;
 
+enum Operations {
+  SUM = "sum",
+  SUB = "sub",
+  MULT = "mult",
+  DIV = "div",
+}
+
 function operator({ number, operation }: IOpearatorConfig) {
   switch (operation) {
-    case "sum":
+    case Operations.SUM:
       total = total + number;
       break;
-    case "sub":
+    case Operations.SUB:
       total = total - number;
       break;
-    case "mult":
+    case Operations.MULT:
       total = total * number;
       break;
-    case "div":
+    case Operations.DIV:
       total = total / number;
       break;
   }
