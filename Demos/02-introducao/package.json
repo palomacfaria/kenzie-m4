@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd src/index.ts"
+    "dev": "tsnd src/calculator.ts"
   },
   "keywords": [],
   "author": "",
