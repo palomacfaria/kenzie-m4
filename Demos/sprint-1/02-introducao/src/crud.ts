@@ -1,6 +1,6 @@
 /* Interface - tipo para descrever especificamente um objeto*/
 
-interface ITodo {
+export interface ITodo {
   id: number;
   title: string;
   content: string;
