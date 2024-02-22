@@ -7,11 +7,16 @@ import { ITodo } from "./crud";
 
 //CLASS: Planta arquitetônica
 class TodoServices {
-  id: number = 1;
-  todoList: ITodo[] = [];
+  //Privado restringe na instância e na herança
+  private id: number = 1;
+  private todoList: ITodo[] = [];
 
   constructor(todoList: ITodo[] = []) {
     this.todoList = todoList;
+  }
+
+  getTodoList() {
+    return this.addTodo;
   }
 
   addTodo(title: string, content: string) {
@@ -32,11 +37,11 @@ todoServices.addTodo(
   "Ta sendo super Legal",
   "Sabe que esse negócio de classe nem é tão difícil"
 );
-console.log(todoServices.todoList);
+console.log(todoServices.getTodoList());
 
 const secondTodoServices = new TodoServices();
 secondTodoServices.addTodo(
   "Pensei que era programação",
   " Mas era engenharia cívil"
 );
-console.log(secondTodoServices.todoList);
+console.log(secondTodoServices.getTodoList());
