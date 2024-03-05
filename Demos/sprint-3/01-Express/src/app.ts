@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import { TodoControllers } from "./controllers/todo.controllers";
+import { todoRoutes } from "./routes/todo.routes";
 
 //Controllers
 //Integração com o framework
@@ -7,18 +7,9 @@ import { TodoControllers } from "./controllers/todo.controllers";
 //Sevices
 //Regras de negócio sem influência de um framework
 
-const app = express();
-
-const todoServices = new TodoControllers();
+export const app = express();
 
 app.use(json());
 
-app.get("/todos", todoServices.getTodos);
-
-app.post("/todos", todoServices.create);
-
-app.delete("/todos/:todoId", todoServices.delete);
-
-app.listen(3000, () => {
-  console.log("API successfully started");
-});
+//Endereço das rotas, roteador
+app.use("/todos", todoRoutes);

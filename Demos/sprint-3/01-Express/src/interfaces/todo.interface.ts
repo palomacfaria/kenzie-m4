@@ -4,4 +4,6 @@ export interface ITodo {
   content: string;
 }
 
-export type TCreateRodoBody = Omit<ITodo, "id">;
+export type TCreateTodoBody = Omit<ITodo, "id">;
+
+export type TUpdateTodoBody = Partial<TCreateTodoBody>
