@@ -8,6 +8,7 @@ app.use(json());
 app.use("/products", productsRouter);
 
 const port = 3000;
+
 app.listen(port, () => {
-  return console.log(`API sucessfully started in port ${port}`);
-});
+    console.log(`API sucessfully started on port ${port}`);
+})
