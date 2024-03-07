@@ -1,25 +1,36 @@
 import { Request, Response } from "express";
-import { IProduct } from "../interfaces/products.interfaces";
-import { generateId, productsDatabase } from "../database/database";
+import { ProductServices } from "../services/products.services";
 
-export class ProductsControllers{
-    getProducts(req: Request, res: Response): Response{
-        return res.status(200).json(productsDatabase);
-    }
+export class ProductsControllers {
+  getProducts(req: Request, res: Response): Response {
+    const productServices = new ProductServices();
 
-    createProduct(req: Request, res: Response): Response{
-        const newProduct: IProduct = { id: generateId(), name: req.body.name, price: req.body.price };
-        
-        productsDatabase.push(newProduct);
+    const response = productServices.getProducts();
 
-        return res.status(201).json(newProduct);
-    }
+    return res.status(200).json(response);
+  }
 
-    deleteProduct(req: Request, res: Response): Response{
-        const index = productsDatabase.findIndex(product => product.id === Number(req.params.id));
+  getOneProducts(req: Request, res: Response): Response {
+    const productServices = new ProductServices();
 
-        productsDatabase.splice(index, 1);
+    const response = productServices.getOneProducts(req.params.id);
 
-        return res.status(204).json();
-    }
+    return res.status(200).json(response);
+  }
+
+  createProduct(req: Request, res: Response): Response {
+    const productServices = new ProductServices();
+
+    const response = productServices.createProduct(req.body.name, req.body.price);
+
+    return res.status(201).json(response);
+  }
+
+  deleteProduct(req: Request, res: Response): Response {
+    const productServices = new ProductServices();
+
+    const response = productServices.deleteProduct(req.params.id);
+
+    return res.status(204).json(response);
+  }
 }
