@@ -21,7 +21,7 @@ export class ProductsControllers {
   createProduct(req: Request, res: Response): Response {
     const productServices = new ProductServices();
 
-    const response = productServices.createProduct(req.body.name, req.body.price);
+    const response = productServices.createProduct(req.body);
 
     return res.status(201).json(response);
   }
@@ -33,4 +33,11 @@ export class ProductsControllers {
 
     return res.status(204).json(response);
   }
+  editProduct(req: Request, res: Response): Response{
+    const productsService = new ProductServices();
+
+    const response = productsService.editProduct(req.params.id, req.body);
+
+    return res.status(200).json(response);
+}
 }

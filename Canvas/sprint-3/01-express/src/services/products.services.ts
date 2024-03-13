@@ -1,5 +1,5 @@
 import { generateId, productsDatabase } from "../database/database";
-import { IProduct } from "../interfaces/products.interfaces";
+import { TCreateProductBody, TEditProductBody, TProduct } from "../interfaces/products.interfaces";
 
 export class ProductServices {
   getProducts() {
@@ -14,11 +14,11 @@ export class ProductServices {
     return findProduct;
   }
 
-  createProduct(name: string, price: number) {
-    const newProduct: IProduct = {
+  createProduct(data: TCreateProductBody) {
+    const newProduct: TProduct = {
       id: generateId(),
-      name: name,
-      price: price,
+      name: data.name,
+      price: data.price,
     };
 
     productsDatabase.push(newProduct);
@@ -32,5 +32,21 @@ export class ProductServices {
     );
 
     productsDatabase.splice(index, 1);
+  }
+
+  editProduct(id: string, data: TEditProductBody) {
+    const product = productsDatabase.find(
+      (product) => product.id === Number(id)
+    ) as TProduct;
+
+    const newProduct = { ...product, ...data };
+
+    const index = productsDatabase.findIndex(
+      (product) => product.id === Number(id)
+    );
+
+    productsDatabase.splice(index, 1, newProduct);
+
+    return newProduct;
   }
 }

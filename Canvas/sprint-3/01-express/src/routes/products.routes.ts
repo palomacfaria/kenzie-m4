@@ -2,7 +2,7 @@ import { Router } from "express";
 import { ProductsControllers } from "../controllers/products.controllers";
 import { IsProductIdValid } from "../middlewares/isProductIdValid.middlewares";
 import { ValidateBody } from "../middlewares/validateBody.middleware";
-import { createProductBodySchema } from "../schemas/createProductBody.schema";
+import { createProductBodySchema, editProductBodySchema } from "../schemas/createProductBody.schema";
 
 export const productsRouter = Router();
 
@@ -27,3 +27,5 @@ productsRouter.delete(
   IsProductIdValid.execute,
   productsControllers.deleteProduct
 );
+
+productsRouter.patch("/:id", IsProductIdValid.execute, ValidateBody.execute({ body: editProductBodySchema }), productsControllers.editProduct);
